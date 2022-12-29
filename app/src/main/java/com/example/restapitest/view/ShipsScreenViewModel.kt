@@ -9,9 +9,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.restapitest.data.mapper.ShipXMapper
 import com.example.restapitest.data.repository.RetrofitRepository
 import com.example.restapitest.data.repository.RoomRepository
-import com.example.restapitest.data.room.ShipXEntity
 import com.example.restapitest.network.model.ShipX
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -59,7 +59,7 @@ class ShipsScreenViewModel @Inject constructor(
             ships = retrofitRepository.getAllShips()
             retrofitRepository.getAllShips().forEach { ship->
                 if (ship.ship_id!=null && ship.image!=null) {
-                    roomRepository.addShip(ShipXEntity(ship.ship_id,ship.image))
+                    roomRepository.addShip(ShipXMapper().mapModelToEntity(ship))
                 }
             }
             toastFromServer.show()
@@ -71,7 +71,7 @@ class ShipsScreenViewModel @Inject constructor(
             val shipsDB = arrayListOf<ShipX>()
             roomRepository.getAllShips().collect {
                 it.forEach { ship->
-                    shipsDB.add(ShipX(ship.ship_id,ship.image))
+                    shipsDB.add(ShipXMapper().mapEntityToModel(ship))
                 }
                 toastFromDB.show()
                 ships = shipsDB.toList()
