@@ -1,5 +1,6 @@
 package com.example.restapitest.view
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,16 +11,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.restapitest.network.model.ShipX
+import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
+import com.example.restapitest.ui.theme.Typography
 
 @Composable
-fun ShipsScreen(data: List<ShipX>) {
+fun ShipsScreen() {
+    val viewModel = hiltViewModel<ShipsScreenViewModel>()
+    Log.d("GGG", "open ship screen")
+
     Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(5.dp)) {
         Text(text = "Ships List")
-        LazyColumn() {
-            items(data) { ship->
-                Ship(ship.ship_id.toString(), ship.image.toString())
+        if (viewModel.ships.isNotEmpty()) {
+            LazyColumn(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+                items(viewModel.ships){ ship->
+                    Log.d("GGG", " res is ${ship.ship_id}")
+                    if (ship.ship_id!=null && ship.image!=null) {
+                        Ship(ship.ship_id, ship.image)
+                    }
+                }
             }
         }
     }
@@ -27,6 +38,9 @@ fun ShipsScreen(data: List<ShipX>) {
 
 @Composable
 fun Ship(id: String, picture: String) {
-    Text(text = id,)
-    Text(text = picture)
+    Text(text = id, style = Typography.body1)
+    AsyncImage(
+        model = picture,
+        contentDescription = null
+    )
 }
