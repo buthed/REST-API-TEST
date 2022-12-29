@@ -9,7 +9,7 @@ class RoomRepository @Inject constructor(
     private val shipXDao: ShipXDao
 ) {
 
-    fun addShip(shipXEntity: ShipXEntity) = shipXDao.addShip(shipXEntity)
+    suspend fun addShip(shipXEntity: ShipXEntity) = shipXDao.addShip(shipXEntity)
 
     fun getAllShips(): Flow<List<ShipXEntity>> {
         return shipXDao.getAllShips()

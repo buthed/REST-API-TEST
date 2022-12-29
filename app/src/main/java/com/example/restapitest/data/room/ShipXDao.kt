@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ShipXDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addShip(shipXEntity: ShipXEntity)
+    suspend fun addShip(shipXEntity: ShipXEntity)
 
     @Query("SELECT * FROM ships")
     fun getAllShips(): Flow<List<ShipXEntity>>

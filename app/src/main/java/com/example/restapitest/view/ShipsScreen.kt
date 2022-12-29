@@ -26,7 +26,6 @@ fun ShipsScreen() {
         if (viewModel.ships.isNotEmpty()) {
             LazyColumn(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
                 items(viewModel.ships){ ship->
-                    Log.d("GGG", " res is ${ship.ship_id}")
                     if (ship.ship_id!=null && ship.image!=null) {
                         Ship(ship.ship_id, ship.image)
                     }
