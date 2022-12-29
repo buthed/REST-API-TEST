@@ -1,4 +1,4 @@
-package com.example.restapitest.data
+package com.example.restapitest.data.repository
 
 import com.example.restapitest.network.ApiClient
 import com.example.restapitest.network.model.ShipX
