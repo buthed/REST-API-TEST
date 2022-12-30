@@ -1,5 +1,7 @@
 package com.example.restapitest.di
 
+import android.app.Activity
+import com.example.restapitest.MainActivity
 import com.example.restapitest.network.ApiClient
 import dagger.Module
 import dagger.Provides
@@ -14,4 +16,8 @@ object AppModule {
     @Provides
     @Singleton
     fun apiService(): ApiClient = ApiClient
+
+    @Provides
+    @Singleton
+    fun provideActivity(): Activity = MainActivity()
 }

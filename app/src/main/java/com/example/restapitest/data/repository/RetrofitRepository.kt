@@ -9,4 +9,6 @@ class RetrofitRepository @Inject constructor(
 ) {
 
     suspend fun getAllShips(): List<ShipX> = apiClient.apiService.fetchShips()
+
+    suspend fun getShip(id: String): ShipX = apiClient.apiService.fetchShip(id)
 }

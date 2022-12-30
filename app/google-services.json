@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "242216826297",
+    "project_id": "testapi-2bacb",
+    "storage_bucket": "testapi-2bacb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242216826297:android:106c253cf4e46a149c7268",
+        "android_client_info": {
+          "package_name": "com.example.restapitest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242216826297-31eltmlt9q4m6drph31oqhigvievadsr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt2cH4kD3WVXl4SeJgkTbOiU2CyFmZJTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "242216826297-31eltmlt9q4m6drph31oqhigvievadsr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
